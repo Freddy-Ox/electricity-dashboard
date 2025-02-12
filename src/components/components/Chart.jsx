@@ -34,7 +34,7 @@ export function ChartComponent({chartData, dateString}) {
         {/* <CardDescription></CardDescription> */}
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[300px] w-[1000px]">
+        <ChartContainer config={chartConfig} className="w-[1000px] h-[300px]">
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis

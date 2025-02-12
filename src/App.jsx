@@ -134,35 +134,73 @@ function App() {
 
   return (
     <>
-      <div className="flex items center">
-        <div>
+  {/* Outer wrapper to ensure full width and centering */}
+  <div className="w-screen flex flex-col items-center">
+
+    {/* Chart Section */}
+    <div className="mt-8">
+      <ChartComponent
+        chartData={chartData}
+        dateString={getDateString()}
+      />
+    </div>
+
+    {/* Buttons */}
+    <div className="flex justify-center items-center space-x-4 mt-4">
+      <LeftButton onClick={handleDecrement}>Previous Date</LeftButton>
+      <p className="text-center">{getDateString()}</p>
+      <RightButton onClick={handleIncrement}>Next Date</RightButton>
+    </div>
+
+    {/* Resizable Section */}
+    <div className="w-[1000px] h-[200px] max-w-[1800px] flex justify-center mt-8">
+      <ResizableComponent chartData={chartData}/>
+    </div>
+
+    {/* Spacer */}
+    <br />
+    <br />
+
+    {/* Line Chart Section */}
+    <div className="w-full max-w-[1800px] flex justify-center mt-8">
+      {!loading ? (
+        <LineChartComponent chartData={avgPrice} />
+      ) : (
+        <ButtonLoadingComponent />
+      )}
+    </div>
+  </div>
+</>
+
+    /*{ <>
+      <div className="flex flex-col items-center w-full">
+        <div className="w-full max-w-[1800px] flex justify-center">
           <ChartComponent
-            style={{ width: "1800px", height: "500px" }}
             chartData={chartData}
             dateString={getDateString()}
           ></ChartComponent>
-          <div className="flex justify-center items-center space-x-4 mt-4">
-            <LeftButton onClick={handleDecrement}>Next Date</LeftButton>
-            <p className="text-center">{getDateString()}</p>
-            <RightButton onClick={handleIncrement}>Next Date</RightButton>
-          </div>
         </div>
-        <div>
-          <ResizableComponent></ResizableComponent>
+
+        <div className="flex justify-center items-center space-x-4 mt-4">
+          <LeftButton onClick={handleDecrement}>Next Date</LeftButton>
+          <p className="text-center">{getDateString()}</p>
+          <RightButton onClick={handleIncrement}>Next Date</RightButton>
         </div>
       </div>
 
+      <div className="w-full max-w-[1800px] flex justify-center mt-8">
+        <ResizableComponent></ResizableComponent>
+      </div>
       <br></br>
       <br></br>
-
-      <div>
+      <div className="w-full max-w-[1800px] flex justify-center mt-8">
         {!loading ? (
           <LineChartComponent chartData={avgPrice} />
         ) : (
           <ButtonLoadingComponent></ButtonLoadingComponent>
         )}
       </div>
-    </>
+    </> }*/
   );
 }
 
