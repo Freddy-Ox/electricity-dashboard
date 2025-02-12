@@ -34,7 +34,7 @@ export function LineChartComponent({chartData}) {
         <CardDescription>Average Electricity Prices: {chartData[0].date}-{chartData.at(-1).date}</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig}>
+        <ChartContainer config={chartConfig} className="w-[1000px] h-[300px]">
           <LineChart
             accessibilityLayer
             data={chartData}
@@ -51,7 +51,7 @@ export function LineChartComponent({chartData}) {
               tickMargin={8}
               /* tickFormatter={(value) => value.slice(0, 3)} */
             />
-            <YAxis></YAxis>
+            <YAxis domain={[-0.5, 3.5]}></YAxis>
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent />}
@@ -66,14 +66,14 @@ export function LineChartComponent({chartData}) {
           </LineChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
+{/*       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 font-medium leading-none">
           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
           Showing total visitors for the last 6 months
         </div>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   )
 }
