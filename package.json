@@ -2,6 +2,7 @@
   "name": "shadcn",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://freddy-ox.github.io/electricity-dashboard/",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -41,4 +42,5 @@
   "overrides": {
     "react-is": "^19.0.0-rc-69d4b800-20241021"
   }
+  
 }
