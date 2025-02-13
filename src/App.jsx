@@ -51,6 +51,7 @@ function App() {
   useEffect(() => {
     async function fetchHistoricalData() {
       setLoading(true);
+      
       try {
         let initDate = new Date("2022-11-01"); // retrieve data beginning at this date
         let incrementingDate = initDate; // iterator

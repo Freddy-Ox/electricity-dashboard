@@ -30,7 +30,7 @@ export function LineChartComponent({chartData}) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart</CardTitle>
+        <CardTitle>Average Electricity Prices: {chartData[0].date} to {chartData.at(-1).date}</CardTitle>
         <CardDescription>Average Electricity Prices: {chartData[0].date}-{chartData.at(-1).date}</CardDescription>
       </CardHeader>
       <CardContent>
@@ -59,7 +59,8 @@ export function LineChartComponent({chartData}) {
             <Line
               dataKey="kWh"
               type="natural"
-              stroke="var(--color-desktop)"
+              /* stroke="var(--color-desktop)" */
+              stroke="rgba(100, 149, 237, 0.6)"
               strokeWidth={2}
               dot={false}
             />
