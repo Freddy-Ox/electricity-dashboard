@@ -32,22 +32,8 @@ const chartConfig = {
   },
 };
 
-const getColor = (kWh, maxKWh) => {
-  const intensity = Math.round((kWh / maxKWh) * 200) + 55; // Scale 55-255
-  return `rgb(${255 - intensity}, ${intensity}, 150)`;
-};
-
 export function ChartComponent({ chartData, dateString }) {
   const maxKWh = Math.max(...chartData.map((d) => d.kWh));
-
-  useEffect(() => {
-    chartData.forEach((d, index) => {
-      document.documentElement.style.setProperty(
-        `--color-kWh-${index}`,
-        getColor(d.kWh, maxKWh)
-      );
-    });
-  }, [chartData, maxKWh]);
 
   return (
     <Card>
@@ -65,7 +51,7 @@ export function ChartComponent({ chartData, dateString }) {
               tickMargin={10}
               axisLine={false}
             />
-            <YAxis domain={[0, 2.0]} />
+            <YAxis domain={[0, 2.6]} />
             <ChartTooltip
               cursor={true}
               content={<ChartTooltipContent hideLabel />}

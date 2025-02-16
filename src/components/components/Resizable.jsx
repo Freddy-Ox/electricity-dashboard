@@ -10,13 +10,6 @@ export function ResizableComponent({ chartData }) {
   let minHour = chartData.find((elem) => elem.kWh === minKWh);
   let maxHour = chartData.find((elem) => elem.kWh === maxKWh);
 
-  /* if (maxHour) {
-    maxHour = maxHour.hour;
-  }
-  if (minHour) {
-    minHour = minHour.hour;
-  } */
-
   maxKWh = maxKWh.toFixed(2);
   minKWh = minKWh.toFixed(2);
 

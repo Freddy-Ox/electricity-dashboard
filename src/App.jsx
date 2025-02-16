@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { ChartComponent } from "./components/components/Chart";
-import { RightButton } from "./components/components/RightButton";
-import { LeftButton } from "./components/components/LeftButton";
+import { ButtonComponent } from "./components/components/Button";
 import { LineChartComponent } from "./components/components/LineChart";
 import { ButtonLoadingComponent } from "./components/components/LoadingButton";
 import { ResizableComponent } from "./components/components/Resizable";
@@ -117,12 +116,12 @@ function App() {
       return newDate;
     });
   }
-
+  
   function handleDecrement() {
     setChartDate((prevDate) => {
       const newDate = new Date(prevDate);
       newDate.setDate(newDate.getDate() - 1);
-
+  
       return newDate;
     });
   }
@@ -145,12 +144,11 @@ function App() {
         dateString={getDateString()}
       />
     </div>
-
-    {/* Buttons */}
+    
     <div className="flex justify-center items-center space-x-4 mt-4">
-      <LeftButton onClick={handleDecrement}>Previous Date</LeftButton>
+      <ButtonComponent onClick={handleDecrement} dateChange="previous" chartDate={chartDate}>Previous Date</ButtonComponent>
       <p className="text-center">{getDateString()}</p>
-      <RightButton onClick={handleIncrement}>Next Date</RightButton>
+      <ButtonComponent onClick={handleIncrement} dateChange="next"chartDate={chartDate}>Next Date </ButtonComponent>
     </div>
 
     {/* Resizable Section */}
