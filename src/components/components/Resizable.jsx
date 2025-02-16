@@ -54,12 +54,13 @@ export function ResizableComponent({ chartData }) {
         <ResizablePanel defaultSize={33} className="bg-emerald-100">
           <div className="flex h-full items-center justify-center p-6 flex-col">
             <h2 className="text-xl mb-2">Average kWh Price</h2>
-            <p className="text-2xl mb-4 mb-10">
+            <p className="text-2xl mb-4 mt-2">
               {(
                 chartData.reduce((sum, item) => sum + item.kWh, 0) /
                 chartData.length
               ).toFixed(2)} kr/kWh
             </p>
+            <p className="text-emerald-100">jjjj</p>
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>

@@ -50,7 +50,7 @@ function App() {
   useEffect(() => {
     async function fetchHistoricalData() {
       setLoading(true);
-      
+
       try {
         let initDate = new Date("2022-11-01"); // retrieve data beginning at this date
         let incrementingDate = initDate; // iterator
@@ -116,12 +116,12 @@ function App() {
       return newDate;
     });
   }
-  
+
   function handleDecrement() {
     setChartDate((prevDate) => {
       const newDate = new Date(prevDate);
       newDate.setDate(newDate.getDate() - 1);
-  
+
       return newDate;
     });
   }
@@ -131,75 +131,58 @@ function App() {
       month: "long",
     })} ${chartDate.toISOString().slice(0, 4)}`;
   }
+  function getDate(date) {
+    return date.toISOString().slice(0, 10);
+  }
 
   return (
     <>
-  {/* Outer wrapper to ensure full width and centering */}
-  <div className="w-screen flex flex-col items-center">
-
-    {/* Chart Section */}
-    <div className="mt-8">
-      <ChartComponent
-        chartData={chartData}
-        dateString={getDateString()}
-      />
-    </div>
-    
-    <div className="flex justify-center items-center space-x-4 mt-4">
-      <ButtonComponent onClick={handleDecrement} dateChange="previous" chartDate={chartDate}>Previous Date</ButtonComponent>
-      <p className="text-center">{getDateString()}</p>
-      <ButtonComponent onClick={handleIncrement} dateChange="next"chartDate={chartDate}>Next Date </ButtonComponent>
-    </div>
-
-    {/* Resizable Section */}
-    <div className="w-[1000px] h-[200px] max-w-[1800px] flex justify-center mt-8">
-      <ResizableComponent chartData={chartData}/>
-    </div>
-
-    {/* Spacer */}
-    <br />
-    <br />
-
-    {/* Line Chart Section */}
-    <div className="w-full max-w-[1800px] flex justify-center mt-8">
-      {!loading ? (
-        <LineChartComponent chartData={avgPrice} />
-      ) : (
-        <ButtonLoadingComponent />
-      )}
-    </div>
-  </div>
-</>
-
-    /*{ <>
-      <div className="flex flex-col items-center w-full">
-        <div className="w-full max-w-[1800px] flex justify-center">
-          <ChartComponent
-            chartData={chartData}
-            dateString={getDateString()}
-          ></ChartComponent>
+      {/* Outer wrapper to ensure full width and centering */}
+      <div className="w-screen flex flex-col items-center">
+        {/* Chart Section */}
+        <div className="mt-8">
+          <ChartComponent chartData={chartData} dateString={getDateString()} />
         </div>
 
         <div className="flex justify-center items-center space-x-4 mt-4">
-          <LeftButton onClick={handleDecrement}>Next Date</LeftButton>
+          <ButtonComponent
+            onClick={handleDecrement}
+            dateChange="previous"
+            chartDate={chartDate}
+          >
+            Previous Date
+          </ButtonComponent>
           <p className="text-center">{getDateString()}</p>
-          <RightButton onClick={handleIncrement}>Next Date</RightButton>
+          <ButtonComponent
+            onClick={handleIncrement}
+            dateChange="next"
+            chartDate={chartDate}
+          >
+            Next Date{" "}
+          </ButtonComponent>
+        </div>
+
+        <div className="leading-none text-muted-foreground mt-2">
+          Note that data for tomorrow becomes available after 13.00
+        </div>
+
+        {/* Resizable Section */}
+        <div className="w-[1000px] h-[200px] max-w-[1800px] flex justify-center mt-8">
+          <ResizableComponent chartData={chartData} />
+        </div>
+
+        <br />
+
+        {/* Line Chart Section */}
+        <div className="w-full max-w-[1800px] flex justify-center mt-8">
+          {!loading ? (
+            <LineChartComponent chartData={avgPrice} />
+          ) : (
+            <ButtonLoadingComponent />
+          )}
         </div>
       </div>
-
-      <div className="w-full max-w-[1800px] flex justify-center mt-8">
-        <ResizableComponent></ResizableComponent>
-      </div>
-      <br></br>
-      <br></br>
-      <div className="w-full max-w-[1800px] flex justify-center mt-8">
-        {!loading ? (
-          <LineChartComponent chartData={avgPrice} />
-        ) : (
-          <ButtonLoadingComponent></ButtonLoadingComponent>
-        )}
-      </div>
-    </> }*/
+    </>
   );
 }
 

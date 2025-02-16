@@ -31,7 +31,7 @@ export function LineChartComponent({chartData}) {
     <Card>
       <CardHeader>
         <CardTitle>Average Electricity Prices: {chartData[0].date} to {chartData.at(-1).date}</CardTitle>
-        <CardDescription>Average Electricity Prices: {chartData[0].date}-{chartData.at(-1).date}</CardDescription>
+        {/* <CardDescription>Average Electricity Prices: {chartData[0].date}-{chartData.at(-1).date}</CardDescription> */}
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="w-[1000px] h-[300px]">
