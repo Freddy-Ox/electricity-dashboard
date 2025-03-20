@@ -24,7 +24,7 @@ export function ButtonComponent({ onClick, dateChange, chartDate }) {
         size="icon"
         disabled={
           (getDateString(today) === getDateString(chartDate) &&
-            getTime(today) < "13:05") ||
+            getTime(today) < "13:05") && dateChange === "next" ||
           (getDateString(today) < getDateString(chartDate) &&
             dateChange === "next")
         }
